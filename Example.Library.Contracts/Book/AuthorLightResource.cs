@@ -5,6 +5,6 @@ namespace Example.Library.Contracts.Book
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public string FullName { get; set; }
     }
 }

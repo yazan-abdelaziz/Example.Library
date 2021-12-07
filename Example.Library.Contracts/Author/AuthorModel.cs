@@ -8,8 +8,6 @@ namespace Example.Library.Contracts.Author
 {
     public class AuthorModel
     {
-        public int Id { get; set; }
-
         [Required]
         public string FirstName { get; set; }
 
