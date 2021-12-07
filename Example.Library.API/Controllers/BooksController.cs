@@ -10,14 +10,11 @@ namespace Example.Library.API.Controllers
     [Route("/books")]
     public class BooksController : Controller
     {
-        private readonly IServerTiming _serverTiming;
         private readonly IBookService _bookService;
 
         public BooksController(
-            IServerTiming serverTiming,
             IBookService bookService)
         {
-            _serverTiming = serverTiming;
             _bookService = bookService;
         }
 
@@ -59,8 +56,8 @@ namespace Example.Library.API.Controllers
         /// <response code="500">Server error.</response>
         /// <returns></returns>
         [HttpPost]
-        [Route("", Name = "CreateBookById")]
-        public async Task<IActionResult> CreateBookById([FromBody] BookModel model)
+        [Route("", Name = "CreateBook")]
+        public async Task<IActionResult> CreateBook([FromBody] BookModel model)
         {
             var resources = await _bookService.CreateBook(model);
             return Ok(resources);
@@ -76,8 +73,8 @@ namespace Example.Library.API.Controllers
         /// <response code="500">Server error.</response>
         /// <returns></returns>
         [HttpPut]
-        [Route("{id:min(1)}", Name = "UpdateBookById")]
-        public async Task<IActionResult> UpdateBookById(int id, [FromBody] BookModel model)
+        [Route("{id:min(1)}", Name = "UpdateBook")]
+        public async Task<IActionResult> UpdateBook(int id, [FromBody] BookModel model)
         {
             var resources = await _bookService.UpdateBook(id, model);
             return Ok(resources);
