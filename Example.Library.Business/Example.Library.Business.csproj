@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Library.Contracts\Example.Library.Contracts.csproj" />
+    <ProjectReference Include="..\Example.Library.DataAccessSQL\Example.Library.DataAccessSQL.csproj" />
+  </ItemGroup>
+
+</Project>
