@@ -14,7 +14,7 @@ namespace Example.Library.Business.BusinessLogic.Services
         Task<List<BookResource>> GetAllBooks();
         Task<BookResource> GetBookById(int id);
         Task<BookResource> CreateBook(BookModel model);
-        Task<BookResource> UpdateBook(BookModel model, int id);
+        Task<BookResource> UpdateBook(int id, BookModel model);
         Task DeleteBook(int id);
     }
 
@@ -52,7 +52,7 @@ namespace Example.Library.Business.BusinessLogic.Services
             return (await _repository.CreateAsync(entity)).ConvertToResource();
         }
 
-        public async Task<BookResource> UpdateBook(BookModel model, int id)
+        public async Task<BookResource> UpdateBook(int id, BookModel model)
         {
             await _validator.ValidateAuthors(model.AuthorsIds);
             var entity = model.ConvertToEntity();

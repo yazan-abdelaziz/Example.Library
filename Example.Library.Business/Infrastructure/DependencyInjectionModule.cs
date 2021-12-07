@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Example.Library.Business.BusinessLogic.Services;
 using Example.Library.DataAccessSQL;
 using Example.Library.DataAccessSQL.Entities;
 using Example.Library.DataAccessSQL.Repositories;
@@ -15,13 +16,22 @@ namespace Example.Library.Business.Infrastructure
                 .InstancePerLifetimeScope();
 
             builder
-                .RegisterGeneric(typeof(IRepository<AuthorEntity,int>))
-                .As(typeof(AuthorRepository))
+                .RegisterGeneric(typeof(AuthorRepository))
+                .As(typeof(IRepository<AuthorEntity, int>))
                 .InstancePerLifetimeScope();
 
             builder
-                .RegisterGeneric(typeof(IRepository<BookEntity,int>))
-                .As(typeof(BookRepository))
+                .RegisterGeneric(typeof(BookRepository))
+                .As(typeof(IRepository<BookEntity, int>))
+                .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<BookService>()
+                .As<IBookService>()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<AuthorService>()
+                .As<IAuthorService>()
                 .InstancePerLifetimeScope();
 
             // Not sure
