@@ -9,8 +9,8 @@ namespace Example.Library.DataAccessSQL.Repositories
     {
         Task<TEntity> GetByIdAsync(TIdentifier id);
         Task<IEnumerable<TEntity>> GetItemsAsync();
-        Task CreateAsync(TEntity entity);
-        Task UpdateAsync(TEntity entity);
+        Task<TEntity> CreateAsync(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filters);
     }

@@ -25,15 +25,17 @@ namespace Example.Library.DataAccessSQL.Repositories
             return await _context.Authors.Include(x => x.Books).ToListAsync();
         }
 
-        public async Task CreateAsync(AuthorEntity entity)
+        public async Task<AuthorEntity> CreateAsync(AuthorEntity entity)
         {
             await _context.Authors.AddAsync(entity);
+            return entity;
         }
 
-        public async Task UpdateAsync(AuthorEntity entity)
+        public async Task<AuthorEntity> UpdateAsync(AuthorEntity entity)
         {
             _context.Authors.Update(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task DeleteAsync(AuthorEntity entity)
